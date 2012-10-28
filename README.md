@@ -11,6 +11,8 @@ focussed on NoSQL databases. These are the goals for this project:
    are always lists or hashes, or are manipulated to be represented in these
    forms).
 
+[![Continuous Integration status](https://secure.travis-ci.org/rbuck/keymap.png)](http://travis-ci.org/rbuck/keymap)
+
 ## Installation
 
 Add this line to your application's Gemfile:
