@@ -1,5 +1,12 @@
-script: rake spec
+language: ruby
+script: bundle exec rake spec
 rvm:
   - 1.9.2
+gemfile:
+ - Gemfile
 notifications:
-  email: true
+  recipients:
+    - buck.robert.j@gmail.com
+branches:
+  only:
+    master
