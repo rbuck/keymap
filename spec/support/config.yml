@@ -1,0 +1,10 @@
+default_connection: <%= defined?(JRUBY_VERSION) ? 'jdbcsqlite3' : 'sqlite3' %>
+
+with_manual_interventions: false
+
+connections:
+  redis:
+      adapter:  redis
+      host:     localhost
+      password: kmunit
+      database: kmunit
