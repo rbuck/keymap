@@ -24,5 +24,4 @@ Gem::Specification.new do |spec|
 
   %w(rake rdoc simplecov).each { |gem| spec.add_development_dependency gem }
   %w(rspec rspec-core rspec-expectations rspec-mocks).each { |gem| spec.add_development_dependency gem, "~> 2.11.0" }
-
 end
