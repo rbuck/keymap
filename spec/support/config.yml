@@ -5,4 +5,4 @@ connections:
     test:
       adapter:  redis
       host:     localhost
-      port:     4000
+      port:     6379
