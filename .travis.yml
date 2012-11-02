@@ -10,3 +10,5 @@ notifications:
 branches:
   only:
     master
+services:
+  - redis-server
