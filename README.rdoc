@@ -64,7 +64,7 @@ Here is a simple example of how to use keymap:
 Copy spec/support/config.example.yml to spec/support/config.yml and edit as needed. Or just run the tests for
 the first time, which will do the copy automatically and use the default (redis).
 
-You can build postgres and mysql databases using the build_postgresql and build_mysql rake tasks.
+You can set up redis using the redis:start_server rake tasks.
 
 == Running the tests
 
