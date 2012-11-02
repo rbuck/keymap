@@ -8,15 +8,15 @@ Gem::Specification.new do |spec|
   spec.version       = Keymap::VERSION
   spec.authors       = ['Robert Buck']
   spec.email         = 'buck.robert.j@gmail.com'
-  spec.description   = %q{Helping Ruby developers and their companies, unlock their key-value store data, through associative and sequential based access, providing unprecedented support for map reduce behaviors, native to the Ruby language.}
-  spec.summary       = %q{Abstracts choosing a key-value store implementation, and provides a natural enumerable-based Ruby API.}
+  spec.description   = 'Helping Ruby developers and their companies, unlock their key-value store data, through associative and sequential based access, providing unprecedented support for map reduce behaviors, native to the Ruby language'
+  spec.summary       = 'Abstracts choosing a key-value store implementation, and provides a natural enumerable-based Ruby API.'
   spec.homepage      = 'https://github.com/rbuck/keymap'
   spec.date          = '2012-11-01'
 
   spec.files         = `git ls-files`.split($/)
   spec.executables   = spec.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(tasks|spec|features)/})
-  spec.require_paths = ["lib"]
+  spec.require_paths = %w(lib)
 
   spec.add_dependency "erubis", "~> 2.7.0"
   spec.add_dependency "redis", "~> 3.0.2"
