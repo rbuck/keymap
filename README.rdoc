@@ -54,8 +54,8 @@ TBD
 
 == Configure databases
 
-Copy test/config.example.yml to test/config.yml and edit as needed. Or just run the tests for
-the first time, which will do the copy automatically and use the default (sqlite3).
+Copy spec/support/config.example.yml to spec/support/config.yml and edit as needed. Or just run the tests for
+the first time, which will do the copy automatically and use the default (redis).
 
 You can build postgres and mysql databases using the build_postgresql and build_mysql rake tasks.
 
@@ -63,31 +63,24 @@ You can build postgres and mysql databases using the build_postgresql and build_
 
 You can run a particular test file from the command line, e.g.
 
-  $ ruby -Itest test/cases/base_test.rb
+  $ ruby -Itest spec/functional/adapter_spec.rb
 
 To run a specific test:
 
-  $ ruby -Itest test/cases/base_test.rb -n test_something_works
+  $ ruby -Itest spec/functional/adapter_spec.rb -n test_something_works
 
-You can run with a database other than the default you set in test/config.yml, using the ARCONN
+You can run with a database other than the default you set in spec/support/config.yml, using the KEYCONN
 environment variable:
 
-  $ ARCONN=postgresql ruby -Itest test/cases/base_test.rb
+  $ KEYCONN=redis ruby -Itest spec/functional/adapter_spec.rb
 
 You can run all the tests for a given database via rake:
 
-  $ rake test_mysql
+  $ rake test_redis
 
-The 'rake test' task will run all the tests for mysql, mysql2, sqlite3 and postgresql.
-
-== Identity Map
-
-By default the tests run with the Identity Map turned off. But all tests should pass whether or
-not the identity map is on or off. You can turn it on using the IM env variable:
-
-  $ IM=true ruby -Itest test/case/base_test.rb
+The 'rake test' task will run all the tests for redis, couchdb, and riak,
 
 == Config file
 
-By default, the config file is expected to be at the path test/config.yml. You can specify a
-custom location with the ARCONFIG environment variable.
+By default, the config file is expected to be at the path spec/support/config.yml. You can specify a
+custom location with the KEYCONFIG environment variable.
