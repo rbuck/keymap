@@ -1,7 +1,6 @@
 require 'monitor'
 require 'active_support/callbacks'
 require 'active_support/dependencies/autoload'
-require 'keymap/connection_adapters/abstract/transaction_management'
 
 module Keymap
 
@@ -14,12 +13,15 @@ module Keymap
       autoload :ConnectionHandler, 'keymap/connection_adapters/abstract/connection_pool'
       autoload :ConnectionManagement, 'keymap/connection_adapters/abstract/connection_pool'
       autoload :ConnectionSpecification
+      autoload :TransactionManagement
+      autoload :DataManagement
     end
 
     class AbstractAdapter
 
       include ActiveSupport::Callbacks
       include TransactionManagement
+      include DataManagement
       include MonitorMixin
 
       define_callbacks :checkout, :checkin

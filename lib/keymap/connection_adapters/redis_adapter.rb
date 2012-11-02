@@ -70,42 +70,84 @@ module Keymap
         raw_connection.discard
       end
 
-      # Retrieves the hash whose name is identified by key.
-      def hash (key)
-        coll = KeyStoreHash.new
-        coll.connection = raw_connection
-        coll.key = key
-        coll
-        #
-        # Perhaps there is a more experienced ruby developer who could help with this.
-        # I'd rather do the following but could not figure out how to get it to work:
-        #
-        #def create_getter(connection, key)
-        #  lambda { |field| connection.hget key, field }
-        #end
-        #
-        #def create_setter(connection, key)
-        #  lambda { |field, value| connection.hset key, field, value }
-        #end
-        #
-        #coll.class.send :define_method, "[]", create_getter(raw_connection, key)
-        #coll.class.send :define_method, "[]=", create_setter(raw_connection, key)
-        #coll
+      def delete(key)
+        raw_connection.del(key) != 0
+      end
+
+      # todo idea: add an optional argument where we specify the data type for elements in the collection
+      def list (key)
+        List.new(raw_connection, key)
       end
     end
 
     private
 
-    class KeyStoreHash < Hash
+    class List
 
-      attr_accessor :connection, :key
+      include Enumerable
 
-      def [] (field)
-        connection.hget key, field
+      attr_reader :connection, :key
+
+      def initialize(connection, key)
+        @connection = connection
+        @key = key
+        self << nil # sentinel to force creation of an "empty list"
       end
 
-      def []=(field, value)
-        connection.hset key, field, value
+      def each
+        if block_given?
+          step_size = 100
+          (0..length % step_size).step(step_size) do |step|
+            first = step_size * step
+            last = first + step_size
+            list = connection.lrange key, first + 1, last
+            list.each do |item|
+              yield item
+            end
+          end
+        else
+          ::Enumerable::Enumerator.new(self, :each)
+        end
+      end
+
+      def <<(value)
+        connection.rpush key, value
+        self
+      end
+
+      alias :push :<<
+
+      def [](index)
+        connection.lindex key, index + 1
+      end
+
+      def []=(index, value)
+        connection.lset key, index + 1, value
+      end
+
+      def length
+        connection.llen(key) -1
+      end
+
+      alias size length
+
+      def empty?()
+        length != 1
+      end
+
+      def pop()
+        connection.rpop key unless length == 0
+      end
+
+      def delete(value)
+        value = connection.lrem(key, 0, value) == 0 ? nil : value
+        yield value if block_given?
+        value
+      end
+
+      def delete_if(&block)
+        # todo
+        self
       end
     end
 

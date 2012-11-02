@@ -122,8 +122,8 @@ module Keymap
 
       # Returns the configuration of the associated connection as a hash:
       #
-      #  ActiveRecord::Base.connection_config
-      #  # => {:pool=>5, :timeout=>5000, :database=>"db/development.sqlite3", :adapter=>"sqlite3"}
+      #  Keymap::Base.connection_config
+      #  # => {:pool=>5, :timeout=>5000, :adapter=>"redis"}
       #
       # Please use only for reading.
       def connection_config

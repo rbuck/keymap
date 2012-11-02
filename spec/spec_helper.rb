@@ -15,5 +15,7 @@ SimpleCov.start do
   add_group 'Libraries', 'lib'
 end
 
-#RSpec.configure do |config|
-#end
+require 'support/config'
+require 'support/connection'
+
+KeymapTest.connect

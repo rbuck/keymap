@@ -23,5 +23,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency "activesupport", "~> 3.2.8"
 
   %w(rake rdoc simplecov).each { |gem| spec.add_development_dependency gem }
+  %w(ruby-prof).each { |gem| spec.add_development_dependency gem }
   %w(rspec rspec-core rspec-expectations rspec-mocks).each { |gem| spec.add_development_dependency gem, "~> 2.11.0" }
 end

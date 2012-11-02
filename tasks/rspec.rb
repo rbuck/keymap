@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'rake'
 
-GEM_ROOT = File.expand_path(File.join(File.dirname(__FILE__), ".."))
+GEM_ROOT ||= File.expand_path(File.join(File.dirname(__FILE__), ".."))
 
 begin
 

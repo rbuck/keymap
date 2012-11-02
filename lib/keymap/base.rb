@@ -25,22 +25,18 @@ module Keymap
     #
     #   development:
     #     adapter: redis
-    #     database: db/development.sqlite3
     #
     #   production:
     #     adapter: redis
-    #     database: db/production.sqlite3
     #
     # ...would result in Keymap::Base.configurations to look like this:
     #
     #   {
     #      'development' => {
-    #         'adapter'  => 'sqlite3',
-    #         'database' => 'db/development.sqlite3'
+    #         'adapter'  => 'redis',
     #      },
     #      'production' => {
-    #         'adapter'  => 'sqlite3',
-    #         'database' => 'db/production.sqlite3'
+    #         'adapter'  => 'redis',
     #      }
     #   }
     cattr_accessor :configurations, :instance_writer => false

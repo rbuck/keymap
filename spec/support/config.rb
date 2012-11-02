@@ -14,12 +14,12 @@ module KeymapTest
     private
 
     def config_file
-      Pathname.new(ENV['KEYMAP_CONFIG'] || SPEC_ROOT + '/support/config.yml')
+      Pathname.new(ENV['KEYMAP_CONFIG'] || File.join(SPEC_ROOT, 'config.yml'))
     end
 
     def read_config
       unless config_file.exist?
-        FileUtils.cp SPEC_ROOT + '/support/config.example.yml', config_file
+        FileUtils.cp(File.join(SPEC_ROOT, 'config.example.yml'), config_file)
       end
 
       erb = Erubis::Eruby.new(config_file.read)
@@ -27,18 +27,6 @@ module KeymapTest
     end
 
     def expand_config(config)
-      config['connections'].each do |adapter, connection|
-        dbs = [['arunit', 'activerecord_unittest'], ['arunit2', 'activerecord_unittest2']]
-        dbs.each do |name, dbname|
-          unless connection[name].is_a?(Hash)
-            connection[name] = {'database' => connection[name]}
-          end
-
-          connection[name]['database'] ||= dbname
-          connection[name]['adapter'] ||= adapter
-        end
-      end
-
       config
     end
   end
