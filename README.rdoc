@@ -1,5 +1,8 @@
 = Keymap
 
+{<img src="https://secure.travis-ci.org/rbuck/keymap.png?branch=master" alt="Continuous Integration Status" />}[http://travis-ci.org/rbuck/keymap]
+{<img src="https://gemnasium.com/rbuck/keymap.png?travis" alt="Dependency Status" />}[https://gemnasium.com/rbuck/keymap]
+
 Helping Ruby developers and their companies, unlock their key-value store data,
 through associative and sequential based access, providing unprecedented support
 for map reduce behaviors, native to the Ruby language.
@@ -14,8 +17,6 @@ focussed on NoSQL databases. These are the goals for this project:
    use of Enumerable operations on returned values (implying returned values
    are always lists or hashes, or are manipulated to be represented in these
    forms).
-
-{<img src="https://secure.travis-ci.org/rbuck/keymap.png?branch=master" alt="Continuous Integration Status" />}[http://travis-ci.org/rbuck/keymap]
 
 == Installation
 
