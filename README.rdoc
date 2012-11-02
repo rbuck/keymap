@@ -2,6 +2,7 @@
 
 {<img src="https://secure.travis-ci.org/rbuck/keymap.png?branch=master" alt="Continuous Integration Status" />}[http://travis-ci.org/rbuck/keymap]
 {<img src="https://gemnasium.com/rbuck/keymap.png?travis" alt="Dependency Status" />}[https://gemnasium.com/rbuck/keymap]
+{<img src="https://codeclimate.com/badge.png" alt="Code Climate" />}[https://codeclimate.com/github/rbuck/keymap]
 
 Helping Ruby developers and their companies, unlock their key-value store data,
 through associative and sequential based access, providing unprecedented support
