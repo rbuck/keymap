@@ -8,16 +8,9 @@ Helping Ruby developers and their companies, unlock their key-value store data,
 through associative and sequential based access, providing unprecedented support
 for map reduce behaviors, native to the Ruby language.
 
-A NoSQL database abstraction similar in design to ActiveRecord but solely
-focussed on NoSQL databases. These are the goals for this project:
-
-1. Provide a simple abstraction layer over NoSQL databases, allowing easy
-   migration from one to another without having to rewrite application code.
-
-2. Provide a natural Ruby integration with NoSQL database, allowing direct
-   use of Enumerable operations on returned values (implying returned values
-   are always lists or hashes, or are manipulated to be represented in these
-   forms).
+Keymap provides a natural Ruby integration with NoSQL database, allowing direct
+use of Enumerable operations on returned values (implying returned values are
+always lists or hashes, or are manipulated to be represented in these forms).
 
 == Installation
 
@@ -35,7 +28,19 @@ Or install it yourself as:
 
 == Usage
 
-TBD
+Here is a simple example of how to use keymap:
+
+    Keymap::Base.establish_connection 'test'
+    connection = Keymap::Base.connection
+
+    list = connection.list :what
+    (0..10).each do |value|
+        list << value
+    end
+
+    sum = list.inject(0) do |result, item|
+        result + item.to_i
+    end
 
 == Contributing
 
