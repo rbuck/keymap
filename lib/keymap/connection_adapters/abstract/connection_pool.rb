@@ -178,7 +178,7 @@ module Keymap
           ActiveSupport::Deprecation.warn(<<-eowarn) if conn.in_use?
 Database connections will not be closed automatically, please close your
 database connection at the end of the thread by calling `close` on your
-connection.  For example: ActiveRecord::Base.connection.close
+connection.  For example: Keymap::Base.connection.close
           eowarn
           checkin conn
           @reserved_connections.delete(key)
@@ -304,28 +304,11 @@ connection.  For example: ActiveRecord::Base.connection.close
     end
 
     # ConnectionHandler is a collection of ConnectionPool objects. It is used
-    # for keeping separate connection pools for Active Record models that connect
-    # to different databases.
-    #
-    # For example, suppose that you have 5 models, with the following hierarchy:
-    #
-    #  |
-    #  +-- Book
-    #  |    |
-    #  |    +-- ScaryBook
-    #  |    +-- GoodBook
-    #  +-- Author
-    #  +-- BankAccount
-    #
-    # Suppose that Book is to connect to a separate database (i.e. one other
-    # than the default database). Then Book, ScaryBook and GoodBook will all use
-    # the same connection pool. Likewise, Author and BankAccount will use the
-    # same connection pool. However, the connection pool used by Author/BankAccount
-    # is not the same as the one used by Book/ScaryBook/GoodBook.
+    # for keeping separate connection pools for Keymap objects stored in
+    # different databases.
     #
     # Normally there is only a single ConnectionHandler instance, accessible via
-    # ActiveRecord::Base.connection_handler. Active Record models use this to
-    # determine that connection pool that they should use.
+    # Keymap::Base.connection_handler.
     class ConnectionHandler
       attr_reader :connection_pools
 

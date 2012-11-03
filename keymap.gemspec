@@ -9,9 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Robert Buck']
   spec.email         = 'buck.robert.j@gmail.com'
   spec.description   = 'Helping Ruby developers and their companies, unlock their key-value store data, through associative and sequential based access, providing unprecedented support for map reduce behaviors, native to the Ruby language'
-  spec.summary       = 'Abstracts choosing a key-value store implementation, and provides a natural enumerable-based Ruby API.'
+  spec.summary       = 'Abstracts choosing a key-value store implementation, and provides a natural enumerable-based Ruby API for hashed and sequential collections.'
   spec.homepage      = 'https://github.com/rbuck/keymap'
-  spec.date          = '2012-11-01'
 
   spec.files         = `git ls-files`.split($/)
   spec.executables   = spec.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
@@ -22,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "redis", "~> 3.0.2"
   spec.add_dependency "activesupport", "~> 3.2.8"
 
-  %w(rake rdoc simplecov).each { |gem| spec.add_development_dependency gem }
+  %w(rake rdoc simplecov hanna-nouveau).each { |gem| spec.add_development_dependency gem }
   %w(ruby-prof).each { |gem| spec.add_development_dependency gem }
   %w(rspec rspec-core rspec-expectations rspec-mocks).each { |gem| spec.add_development_dependency gem, "~> 2.11.0" }
 end

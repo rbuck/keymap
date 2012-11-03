@@ -21,6 +21,8 @@ Dir['tasks/**/*.rb'].each { |file| load file }
 GEM_NAME = "keymap"
 GEM_VERSION = Keymap::VERSION
 
+CLEAN.include('doc/ri')
+CLEAN.include('doc/site')
 CLEAN.include('pkg')
 
 task :default => :spec
@@ -107,4 +109,22 @@ task :lines do
   }
 
   puts "Total: Lines #{total_lines}, LOC #{total_codelines}"
+end
+
+RDOC_FILES = FileList['README.rdoc', 'lib/**/*.rb']
+
+require 'rdoc/task'
+Rake::RDocTask.new do |rdoc|
+  rdoc.title = "#{GEM_NAME} #{GEM_VERSION}"
+  rdoc.main = 'README.rdoc'
+  rdoc.rdoc_dir = 'doc/site/api'
+  rdoc.options << "-a" << "-U" << "-D" << "-v"
+  rdoc.rdoc_files.include(RDOC_FILES)
+end
+
+Rake::RDocTask.new(:ri) do |rdoc|
+  rdoc.main = "README.rdoc"
+  rdoc.rdoc_dir = "doc/ri"
+  rdoc.options << "--ri-system"
+  rdoc.rdoc_files.include(RDOC_FILES)
 end

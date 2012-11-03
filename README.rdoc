@@ -42,6 +42,22 @@ Here is a simple example of how to use keymap:
         result + item.to_i
     end
 
+The key observation here is this: no key-value store specific API, its plain ordinary Ruby.
+One more example on how to use keymap, this time with a hash:
+
+      accounting = @connection.hash :accounting
+      salaries = {
+          Bob: 82000,
+          Jim: 94000,
+          Billy: 58000
+      }
+      accounting.merge! salaries
+      total = 0
+      accounting.each_value do |value|
+        total = total + value.to_i
+      end
+      total => # 234000
+
 == Contributing
 
 1. Fork it

@@ -70,28 +70,108 @@ module Keymap
         raw_connection.discard
       end
 
-      def delete(key)
-        raw_connection.del(key) != 0
+      def delete(id)
+        raw_connection.del(id) != 0
       end
 
-      # todo idea: add an optional argument where we specify the data type for elements in the collection
-      def list (key)
-        List.new(raw_connection, key)
+      def hash (id)
+        RedisHash.new(raw_connection, id)
+      end
+
+      def list (id)
+        # todo idea: add an optional argument where we specify the data type for elements in the collection
+        RedisList.new(raw_connection, id)
       end
     end
 
     private
 
-    class List
+    class RedisHash
 
       include Enumerable
 
-      attr_reader :connection, :key
+      attr_reader :connection, :id, :sentinel
 
-      def initialize(connection, key)
+      # n.b. nil gets represented as an empty string by redis, so the two are
+      # in effect identical keys.
+      def initialize(connection, id, sentinel=nil)
         @connection = connection
-        @key = key
-        self << nil # sentinel to force creation of an "empty list"
+        @id = id
+        @sentinel = sentinel
+        self[sentinel] = sentinel
+      end
+
+      def empty?
+        connection.hlen id == 1
+      end
+
+      def [](key)
+        connection.hget id, key
+      end
+
+      def []=(key, value)
+        connection.hset id, key, value
+      end
+
+      def each
+        if block_given?
+          hash_keys.each { |key| yield [key, self[key]] unless key == sentinel }
+        else
+          ::Enumerable::Enumerator.new(self, :each)
+        end
+      end
+
+      def each_pair
+        if block_given?
+          hash_keys.each { |key| yield key, self[key] unless key == sentinel }
+        else
+          ::Enumerable::Enumerator.new(self, :each_pair)
+        end
+      end
+
+      def each_value
+        if block_given?
+          hash_keys.each { |key| yield self[key] unless key == sentinel }
+        else
+          ::Enumerable::Enumerator.new(self, :each_value)
+        end
+      end
+
+      def delete(key)
+        value = self[key]
+        connection.hdel id, key
+        value
+      end
+
+      def merge!(hash)
+        hash.each do |key, value|
+          self[key] = value
+        end
+        self
+      end
+
+      alias merge merge!
+
+      private
+
+      def hash_keys
+        keys = connection.hkeys id
+        keys.delete sentinel
+        keys.delete ''
+        keys
+      end
+    end
+
+    class RedisList
+
+      include Enumerable
+
+      attr_reader :connection, :id
+
+      def initialize(connection, id, sentinel=nil)
+        @connection = connection
+        @id = id
+        self << sentinel # sentinel to force creation of an "empty list"
       end
 
       def each
@@ -100,7 +180,7 @@ module Keymap
           (0..length % step_size).step(step_size) do |step|
             first = step_size * step
             last = first + step_size
-            list = connection.lrange key, first + 1, last
+            list = connection.lrange id, first + 1, last
             list.each do |item|
               yield item
             end
@@ -111,22 +191,29 @@ module Keymap
       end
 
       def <<(value)
-        connection.rpush key, value
+        connection.rpush id, value
         self
       end
 
       alias :push :<<
 
       def [](index)
-        connection.lindex key, index + 1
+        connection.lindex id, index + 1
       end
 
       def []=(index, value)
-        connection.lset key, index + 1, value
+        connection.lset id, index + 1, value
+      end
+
+      def concat array
+        array.each do |entry|
+          self << entry
+        end
+        self
       end
 
       def length
-        connection.llen(key) -1
+        connection.llen(id) -1
       end
 
       alias size length
@@ -136,18 +223,24 @@ module Keymap
       end
 
       def pop()
-        connection.rpop key unless length == 0
+        connection.rpop id unless length == 0
       end
 
       def delete(value)
-        value = connection.lrem(key, 0, value) == 0 ? nil : value
+        value = connection.lrem(id, 0, value) == 0 ? nil : value
         yield value if block_given?
         value
       end
 
-      def delete_if(&block)
-        # todo
-        self
+      def delete_if
+        if block_given?
+          each do |value|
+            delete(value) if yield(value)
+          end
+          self
+        else
+          nil
+        end
       end
     end
 

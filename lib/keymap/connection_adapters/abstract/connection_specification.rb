@@ -107,7 +107,7 @@ module Keymap
     class << self
       # Returns the connection currently associated with the class. This can
       # also be used to "borrow" the connection to do database work unrelated
-      # to any of the specific Active Records.
+      # to any of the specific Keymap collections.
       def connection
         retrieve_connection
       end

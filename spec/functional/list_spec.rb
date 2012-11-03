@@ -52,6 +52,42 @@ describe Keymap::Base do
       list.pop.to_i.should eq(1)
     end
 
+    it "that supports replacing an entry by index" do
+      list = @connection.list :what
+      list << 'a' << 'b'
+      list[0] = 'c'
+      list[0].should eq('c')
+    end
+
+    it "that returns the value when deleting values that does exist" do
+      list = @connection.list :what
+      list << 'a'
+      list.delete('a').should eq('a')
+    end
+
+    it "that returns nil when deleting values that does not exist" do
+      list = @connection.list :what
+      list.delete('a').should be_nil
+    end
+
+    it "that supports concatenation" do
+      list = @connection.list :what
+      list << 'a'
+      list.concat %w(b)
+      list[0].should eq('a')
+      list[1].should eq('b')
+    end
+
+    it "that supports selectively deleting entries by a matching condition" do
+      list = @connection.list :what
+      list.concat [1, 2, 3, 4, 5, 6, 7, 8, 9]
+      list.delete_if { |value|
+        value.to_i % 2 > 0
+      }
+      list.length.should eq(4)
+      list[1].to_i.should eq(4)
+    end
+
     it "lists support append operators and inject" do
       list = @connection.list :what
       (0..10).each do |value|
