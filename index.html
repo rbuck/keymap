@@ -44,12 +44,21 @@
 
     <h3>Recent Updates</h3>
 
-    <it>2012-11-01</it><br/><cite>This week enumerable-based list support is available and fully tested.
-      This allows Ruby developers to access and iterate over their key-value
-      store data the same way they perform map, collect, inject operations
-      over Ruby arrays. And what's more, data is read incrementally so that
-      you don't blow your address space when reducing or summarizing larger
-      dataset sizes.</cite>
+    <it>2012-11-03</it>
+    <br/><cite>We now have support for Ruby hashes! Like
+    the support for arrays (lists), the hash integration supports a vast
+    subset of the Hash API as well as Enumerable. Unlike lists, as described
+    below, performing an each operation will pull all the keys into memory.
+    That should be a design consideration for users dealing with massive
+    datasets.</cite>
+
+    <it>2012-11-01</it>
+    <br/><cite>This week enumerable-based list support is available and fully tested.
+    This allows Ruby developers to access and iterate over their key-value
+    store data the same way they perform map, collect, inject operations
+    over Ruby arrays. And what's more, data is read incrementally so that
+    you don't blow your address space when reducing or summarizing larger
+    dataset sizes.</cite>
 
     <!--
     <p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
@@ -79,9 +88,8 @@
       <a href="http://travis-ci.org/rbuck/keymap">available from Travis-CI</a> and
       <a href="https://circleci.com/gh/rbuck/keymap">available from Circle-CI</a>.</p>
 
-    <p>Continuous Integration code coverage information is
-      <a href="https://rbuck.ci.cloudbees.com/job/keymap/ws/coverage/index.html#_AllFiles">available from CloudBees</a>.
-    </p>
+    <p>CodeClimate <a href="https://codeclimate.com/github/rbuck/keymap">provides our static analysis
+      quality metrics</a>.</p>
 
     <h3>Support or Contact</h3>
 
