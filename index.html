@@ -39,26 +39,50 @@
   <section id="main_content" class="inner">
     <h3>Welcome to the Ruby Keymap Project</h3>
 
+    <p>The purpose of the project is to provide seamless Ruby support for list-based and hash-based
+      collections stored in various backing stores, such as Riak, Redis, etc. Acknowledging that SQL
+      is only one possible backing store for enterprise information, users should take note of the
+      similarity in look and feel to ActiveRecord in some regards, but in other regards the API pays
+      particular emphasis on map-reduce like behaviors intrinsic to Ruby, over any emphasis on SQL
+      per se. As such, the solution is not bound to SQL semantics, whereas ActiveRecord targets SQL.</p>
+
+    <h3>Contributors Wanted</h3>
+
     <p>I am looking for co-contributors to round out the API and tests. If you have interest in helping please let me
-      know. I think this is pretty cool, and it's a great way to learn more about Ruby and ActiveRecord itself.</p>
+      know. Here are some things that I would contributions for and help with:</p>
+
+    <ol>
+      <ul>Connection Adapters:
+        <li>Add connection adapter for Riak</li>
+        <li>Add connection adapter for CouchDB</li>
+        <li>Add connection adapter for MongoDB</li>
+        <li>Add connection adapter for Cassandra</li>
+        <li>Add connection adapter for Hadoop</li>
+      </ul>
+      <ul>Persistence:
+        <li>Add support for a persistence DSL for Ruby objects and classes</li>
+      </ul>
+    </ol>
 
     <h3>Recent Updates</h3>
 
-    <p><it>2012-11-03</it>
-    <br/><cite>We now have support for Ruby hashes! Like
-    the support for arrays (lists), the hash integration supports a vast
-    subset of the Hash API as well as Enumerable. Unlike lists, as described
-    below, performing an each operation will pull all the keys into memory.
-    That should be a design consideration for users dealing with massive
-    datasets.</cite></p>
+    <p>
+      <it>2012-11-03</it>
+      <br/><cite>We now have support for Ruby hashes! Like
+      the support for arrays (lists), the hash integration supports a vast
+      subset of the Hash API as well as Enumerable. Unlike lists, as described
+      below, performing an each operation will pull all the keys into memory.
+      That should be a design consideration for users dealing with massive
+      datasets.</cite></p>
 
-    <p><it>2012-11-01</it>
-    <br/><cite>This week enumerable-based list support is available and fully tested.
-    This allows Ruby developers to access and iterate over their key-value
-    store data the same way they perform map, collect, inject operations
-    over Ruby arrays. And what's more, data is read incrementally so that
-    you don't blow your address space when reducing or summarizing larger
-    dataset sizes.</cite></p>
+    <p>
+      <it>2012-11-01</it>
+      <br/><cite>This week enumerable-based list support is available and fully tested.
+      This allows Ruby developers to access and iterate over their key-value
+      store data the same way they perform map, collect, inject operations
+      over Ruby arrays. And what's more, data is read incrementally so that
+      you don't blow your address space when reducing or summarizing larger
+      dataset sizes.</cite></p>
 
     <!--
     <p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
