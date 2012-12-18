@@ -107,3 +107,22 @@ The 'rake test' task will run all the tests for redis, couchdb, and riak,
 
 By default, the config file is expected to be at the path spec/support/config.yml. You can specify a
 custom location with the KEYCONFIG environment variable.
+
+== PUBLISHING THE GEM
+
+=== TAGGING
+
+Tag the product using tags per the SemVer specification; our tags have a v-prefix:
+
+    git tag -a v0.3.2 -m "SemVer Version: v0.3.2"
+
+If you make a mistake, take it back quickly:
+
+    git tag -d v0.3.2
+    git push origin :refs/tags/v0.3.2
+
+===PUBLISHING
+
+Here are the commands used to publish:
+
+    gem push pkg/keymap-0.3.2.gem
