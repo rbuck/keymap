@@ -5,7 +5,7 @@ require 'rake'
 require 'rake/clean'
 require 'rake/testtask'
 require 'rake/packagetask'
-require 'rdoc/task'
+
 require 'bundler'
 require 'bundler/gem_tasks'
 
@@ -16,14 +16,14 @@ Bundler::GemHelper.install_tasks
 
 load 'keymap.gemspec'
 
-Dir['tasks/**/*.rb'].each { |file| load file }
-
 GEM_NAME = "keymap"
 GEM_VERSION = Keymap::VERSION
 
 CLEAN.include('doc/ri')
 CLEAN.include('doc/site')
 CLEAN.include('pkg')
+
+Dir['tasks/**/*.rb'].each { |file| load file }
 
 task :default => :spec
 
@@ -84,47 +84,4 @@ namespace :redis do
   end
 
   task :restart_server => [:stop_server, :start_server]
-end
-
-desc "Prints lines of code metrics"
-task :lines do
-  lines, codelines, total_lines, total_codelines = 0, 0, 0, 0
-
-  FileList["lib/keymap/**/*.rb"].each { |file_name|
-    next if file_name =~ /vendor/
-    f = File.open(file_name)
-
-    while (line = f.gets)
-      lines += 1
-      next if line =~ /^\s*$/
-      next if line =~ /^\s*#/
-      codelines += 1
-    end
-    puts "L: #{sprintf("%4d", lines)}, LOC #{sprintf("%4d", codelines)} | #{file_name}"
-
-    total_lines += lines
-    total_codelines += codelines
-
-    lines, codelines = 0, 0
-  }
-
-  puts "Total: Lines #{total_lines}, LOC #{total_codelines}"
-end
-
-RDOC_FILES = FileList['README.rdoc', 'lib/**/*.rb']
-
-require 'rdoc/task'
-Rake::RDocTask.new do |rdoc|
-  rdoc.title = "#{GEM_NAME} #{GEM_VERSION}"
-  rdoc.main = 'README.rdoc'
-  rdoc.rdoc_dir = 'doc/site/api'
-  rdoc.options << "-a" << "-U" << "-D" << "-v"
-  rdoc.rdoc_files.include(RDOC_FILES)
-end
-
-Rake::RDocTask.new(:ri) do |rdoc|
-  rdoc.main = "README.rdoc"
-  rdoc.rdoc_dir = "doc/ri"
-  rdoc.options << "--ri-system"
-  rdoc.rdoc_files.include(RDOC_FILES)
 end

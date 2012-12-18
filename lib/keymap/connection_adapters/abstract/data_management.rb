@@ -2,12 +2,16 @@ module Keymap
   module ConnectionAdapters
     module DataManagement #:nodoc:
 
-      def list (key)
+      def delete(key)
+        false
+      end
+
+      def hash (key)
         nil
       end
 
-      def delete(key)
-        false
+      def list (key)
+        nil
       end
 
     end
