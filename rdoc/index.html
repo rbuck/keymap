@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>keymap 0.3.2</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body>
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./README_rdoc.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Keymap.html">Keymap</a>
+  
+    <li><a href="./Keymap/AdapterNotFound.html">Keymap::AdapterNotFound</a>
+  
+    <li><a href="./Keymap/AdapterNotSpecified.html">Keymap::AdapterNotSpecified</a>
+  
+    <li><a href="./Keymap/Base.html">Keymap::Base</a>
+  
+    <li><a href="./Keymap/ConnectionAdapters.html">Keymap::ConnectionAdapters</a>
+  
+    <li><a href="./Keymap/ConnectionAdapters/AbstractAdapter.html">Keymap::ConnectionAdapters::AbstractAdapter</a>
+  
+    <li><a href="./Keymap/ConnectionAdapters/ConnectionHandler.html">Keymap::ConnectionAdapters::ConnectionHandler</a>
+  
+    <li><a href="./Keymap/ConnectionAdapters/ConnectionManagement.html">Keymap::ConnectionAdapters::ConnectionManagement</a>
+  
+    <li><a href="./Keymap/ConnectionAdapters/ConnectionPool.html">Keymap::ConnectionAdapters::ConnectionPool</a>
+  
+    <li><a href="./Keymap/ConnectionAdapters/RedisAdapter.html">Keymap::ConnectionAdapters::RedisAdapter</a>
+  
+    <li><a href="./Keymap/ConnectionAdapters/RedisAdapter/RedisHash.html">Keymap::ConnectionAdapters::RedisAdapter::RedisHash</a>
+  
+    <li><a href="./Keymap/ConnectionAdapters/RedisAdapter/RedisList.html">Keymap::ConnectionAdapters::RedisAdapter::RedisList</a>
+  
+    <li><a href="./Keymap/ConnectionAdapters/TransactionManagement.html">Keymap::ConnectionAdapters::TransactionManagement</a>
+  
+    <li><a href="./Keymap/ConnectionNotEstablished.html">Keymap::ConnectionNotEstablished</a>
+  
+    <li><a href="./Keymap/ConnectionTimeoutError.html">Keymap::ConnectionTimeoutError</a>
+  
+    <li><a href="./Keymap/KeymapError.html">Keymap::KeymapError</a>
+  
+    <li><a href="./Keymap/Rollback.html">Keymap::Rollback</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation" class="description">
+  
+<h1 id="label-Keymap"><a href="Keymap.html">Keymap</a></h1>
+
+<p><a href="http://travis-ci.org/rbuck/keymap"><img
+src="https://secure.travis-ci.org/rbuck/keymap.png?branch=master"
+alt="Continuous Integration Status" /></a> <a
+href="https://gemnasium.com/rbuck/keymap"><img
+src="https://gemnasium.com/rbuck/keymap.png?travis" alt="Dependency Status"
+/></a> <a href="https://codeclimate.com/github/rbuck/keymap"><img
+src="https://codeclimate.com/badge.png" alt="Code Climate" /></a></p>
+
+<p>Helping Ruby developers and their companies, unlock their key-value store
+data, through associative and sequential based access, providing
+unprecedented support for map reduce behaviors, native to the Ruby
+language.</p>
+
+<p><a href="Keymap.html">Keymap</a> provides a natural Ruby integration with
+NoSQL database, allowing direct use of Enumerable operations on returned
+values (implying returned values are always lists or hashes, or are
+manipulated to be represented in these forms).</p>
+
+<h2 id="label-Installation">Installation</h2>
+
+<p>Add this line to your application’s Gemfile:</p>
+
+<pre>gem 'keymap'</pre>
+
+<p>And then execute:</p>
+
+<pre>$ bundle</pre>
+
+<p>Or install it yourself as:</p>
+
+<pre>$ gem install keymap</pre>
+
+<h2 id="label-Usage">Usage</h2>
+
+<p>Here is a simple example of how to use keymap:</p>
+
+<pre class="ruby"><span class="ruby-constant">Keymap</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>.<span class="ruby-identifier">establish_connection</span> <span class="ruby-string">'test'</span>
+<span class="ruby-identifier">connection</span> = <span class="ruby-constant">Keymap</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>.<span class="ruby-identifier">connection</span>
+
+<span class="ruby-identifier">list</span> = <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">list</span> :<span class="ruby-identifier">what</span>
+(<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">10</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">list</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">value</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-identifier">sum</span> = <span class="ruby-identifier">list</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-value">0</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">result</span>, <span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">result</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">to_i</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>The key observation here is this: no key-value store specific API, its
+plain ordinary Ruby. One more example on how to use keymap, this time with
+a hash:</p>
+
+<pre class="ruby"><span class="ruby-identifier">accounting</span> = <span class="ruby-ivar">@connection</span>.<span class="ruby-identifier">hash</span> :<span class="ruby-identifier">accounting</span>
+<span class="ruby-identifier">salaries</span> = {
+    <span class="ruby-constant">Bob</span><span class="ruby-operator">:</span> <span class="ruby-value">82000</span>,
+    <span class="ruby-constant">Jim</span><span class="ruby-operator">:</span> <span class="ruby-value">94000</span>,
+    <span class="ruby-constant">Billy</span><span class="ruby-operator">:</span> <span class="ruby-value">58000</span>
+}
+<span class="ruby-identifier">accounting</span>.<span class="ruby-identifier">merge!</span> <span class="ruby-identifier">salaries</span>
+<span class="ruby-identifier">total</span> = <span class="ruby-value">0</span>
+<span class="ruby-identifier">accounting</span>.<span class="ruby-identifier">each_value</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">total</span> = <span class="ruby-identifier">total</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_i</span>
+<span class="ruby-keyword">end</span>
+<span class="ruby-identifier">total</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-comment"># 234000</span>
+</pre>
+
+<h2 id="label-Contributing">Contributing</h2>
+<ol><li>
+<p>Fork it</p>
+</li><li>
+<p>Create your feature branch (`git checkout -b my-new-feature`)</p>
+</li><li>
+<p>Commit your changes (`git commit -am ‘Add some feature’`)</p>
+</li><li>
+<p>Push to the branch (`git push origin my-new-feature`)</p>
+</li><li>
+<p>Create new Pull Request</p>
+</li></ol>
+
+<h2 id="label-Writing+New+Adapters">Writing New Adapters</h2>
+<ol><li>
+<p>Create a new adapter file named #{database_name}_adapter.rb, placing it in
+the connection adapters directory.</p>
+</li><li>
+<p>Add an entry to the list of supported databases in the Rakefile.</p>
+</li><li>
+<p>Add test configuration entries in the spec/support/config.yml file.</p>
+</li><li>
+<p>Verify all tests pass when the KEYCONN=#{database_name} environment
+variable is set.</p>
+</li></ol>
+
+<h2 id="label-Configure+databases">Configure databases</h2>
+
+<p>Copy spec/support/config.example.yml to spec/support/config.yml and edit as
+needed. Or just run the tests for the first time, which will do the copy
+automatically and use the default (redis).</p>
+
+<p>You can set up redis using the redis:start_server rake tasks.</p>
+
+<h2 id="label-Running+the+tests">Running the tests</h2>
+
+<p>You can run a particular test file from the command line, e.g.</p>
+
+<pre>$ ruby -Itest spec/functional/adapter_spec.rb</pre>
+
+<p>To run a specific test:</p>
+
+<pre>$ ruby -Itest spec/functional/adapter_spec.rb -n test_something_works</pre>
+
+<p>You can run with a database other than the default you set in
+spec/support/config.yml, using the KEYCONN environment variable:</p>
+
+<pre>$ KEYCONN=redis ruby -Itest spec/functional/adapter_spec.rb</pre>
+
+<p>You can run all the tests for a given database via rake:</p>
+
+<pre>$ rake test_redis</pre>
+
+<p>The ‘rake test’ task will run all the tests for redis, couchdb, and riak,</p>
+
+<h2 id="label-Config+file">Config file</h2>
+
+<p>By default, the config file is expected to be at the path
+spec/support/config.yml. You can specify a custom location with the
+KEYCONFIG environment variable.</p>
+
+<h2 id="label-PUBLISHING+THE+GEM">PUBLISHING THE GEM</h2>
+
+<h3 id="label-TAGGING">TAGGING</h3>
+
+<p>Tag the product using tags per the SemVer specification; our tags have a
+v-prefix:</p>
+
+<pre>git tag -a v0.3.2 -m &quot;SemVer Version: v0.3.2&quot;</pre>
+
+<p>If you make a mistake, take it back quickly:</p>
+
+<pre>git tag -d v0.3.2
+git push origin :refs/tags/v0.3.2</pre>
+
+<h3 id="label-PUBLISHING">PUBLISHING</h3>
+
+<p>Here are the commands used to publish:</p>
+
+<pre>gem push pkg/keymap-0.3.2.gem</pre>
+
+</div>
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

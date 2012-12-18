@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>class Keymap::ConnectionAdapters::RedisAdapter::RedisList - keymap 0.3.2</title>
+
+<link type="text/css" media="screen" href="../../../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../../js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../../../index.html">Home</a>
+    <a href="../../../table_of_contents.html#classes">Classes</a>
+    <a href="../../../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/keymap/connection_adapters/redis_adapter.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">Object
+  
+</nav>
+
+    <!-- Included Modules -->
+<nav id="includes-section" class="section">
+  <h3 class="section-header">Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><span class="include">Enumerable</span>
+  
+  
+  </ul>
+</nav>
+
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-new">::new</a>
+    
+    <li><a href="#method-i-3C-3C">#&lt;&lt;</a>
+    
+    <li><a href="#method-i-5B-5D">#[]</a>
+    
+    <li><a href="#method-i-5B-5D-3D">#[]=</a>
+    
+    <li><a href="#method-i-concat">#concat</a>
+    
+    <li><a href="#method-i-delete">#delete</a>
+    
+    <li><a href="#method-i-delete_if">#delete_if</a>
+    
+    <li><a href="#method-i-each">#each</a>
+    
+    <li><a href="#method-i-empty-3F">#empty?</a>
+    
+    <li><a href="#method-i-length">#length</a>
+    
+    <li><a href="#method-i-pop">#pop</a>
+    
+    <li><a href="#method-i-push">#push</a>
+    
+    <li><a href="#method-i-size">#size</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../../../README_rdoc.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../../Keymap.html">Keymap</a>
+  
+    <li><a href="../../../Keymap/AdapterNotFound.html">Keymap::AdapterNotFound</a>
+  
+    <li><a href="../../../Keymap/AdapterNotSpecified.html">Keymap::AdapterNotSpecified</a>
+  
+    <li><a href="../../../Keymap/Base.html">Keymap::Base</a>
+  
+    <li><a href="../../../Keymap/ConnectionAdapters.html">Keymap::ConnectionAdapters</a>
+  
+    <li><a href="../../../Keymap/ConnectionAdapters/AbstractAdapter.html">Keymap::ConnectionAdapters::AbstractAdapter</a>
+  
+    <li><a href="../../../Keymap/ConnectionAdapters/ConnectionHandler.html">Keymap::ConnectionAdapters::ConnectionHandler</a>
+  
+    <li><a href="../../../Keymap/ConnectionAdapters/ConnectionManagement.html">Keymap::ConnectionAdapters::ConnectionManagement</a>
+  
+    <li><a href="../../../Keymap/ConnectionAdapters/ConnectionPool.html">Keymap::ConnectionAdapters::ConnectionPool</a>
+  
+    <li><a href="../../../Keymap/ConnectionAdapters/RedisAdapter.html">Keymap::ConnectionAdapters::RedisAdapter</a>
+  
+    <li><a href="../../../Keymap/ConnectionAdapters/RedisAdapter/RedisHash.html">Keymap::ConnectionAdapters::RedisAdapter::RedisHash</a>
+  
+    <li><a href="../../../Keymap/ConnectionAdapters/RedisAdapter/RedisList.html">Keymap::ConnectionAdapters::RedisAdapter::RedisList</a>
+  
+    <li><a href="../../../Keymap/ConnectionAdapters/TransactionManagement.html">Keymap::ConnectionAdapters::TransactionManagement</a>
+  
+    <li><a href="../../../Keymap/ConnectionNotEstablished.html">Keymap::ConnectionNotEstablished</a>
+  
+    <li><a href="../../../Keymap/ConnectionTimeoutError.html">Keymap::ConnectionTimeoutError</a>
+  
+    <li><a href="../../../Keymap/KeymapError.html">Keymap::KeymapError</a>
+  
+    <li><a href="../../../Keymap/Rollback.html">Keymap::Rollback</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Keymap::ConnectionAdapters::RedisAdapter::RedisList</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <!-- Attributes -->
+    <section id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="attribute-i-connection" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">connection</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-id" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">id</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section><!-- attribute-method-details -->
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(connection, id, sentinel=nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File lib/keymap/connection_adapters/redis_adapter.rb, line 170</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">connection</span>, <span class="ruby-identifier">id</span>, <span class="ruby-identifier">sentinel</span>=<span class="ruby-keyword">nil</span>)
+  <span class="ruby-ivar">@connection</span> = <span class="ruby-identifier">connection</span>
+  <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">id</span>
+  <span class="ruby-keyword">self</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">sentinel</span> <span class="ruby-comment"># sentinel to force creation of an &quot;empty list&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- new-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-3C-3C" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">&lt;&lt;</span><span
+            class="method-args">(value)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="3C-3C-source">
+            <pre><span class="ruby-comment"># File lib/keymap/connection_adapters/redis_adapter.rb, line 192</span>
+<span class="ruby-keyword">def</span> <span class="ruby-operator">&lt;&lt;</span>(<span class="ruby-identifier">value</span>)
+  <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">rpush</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">value</span>
+  <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- 3C-3C-source -->
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="RedisList.html#method-i-push">push</a>
+        </div>
+        
+
+        
+      </div><!-- 3C-3C-method -->
+
+    
+      <div id="method-i-5B-5D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">[]</span><span
+            class="method-args">(index)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="5B-5D-source">
+            <pre><span class="ruby-comment"># File lib/keymap/connection_adapters/redis_adapter.rb, line 199</span>
+<span class="ruby-keyword">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-identifier">index</span>)
+  <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">lindex</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">index</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- 5B-5D-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- 5B-5D-method -->
+
+    
+      <div id="method-i-5B-5D-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">[]=</span><span
+            class="method-args">(index, value)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="5B-5D-3D-source">
+            <pre><span class="ruby-comment"># File lib/keymap/connection_adapters/redis_adapter.rb, line 203</span>
+<span class="ruby-keyword">def</span> <span class="ruby-operator">[]=</span>(<span class="ruby-identifier">index</span>, <span class="ruby-identifier">value</span>)
+  <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">lset</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">index</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">value</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- 5B-5D-3D-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- 5B-5D-3D-method -->
+
+    
+      <div id="method-i-concat" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">concat</span><span
+            class="method-args">(array)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="concat-source">
+            <pre><span class="ruby-comment"># File lib/keymap/connection_adapters/redis_adapter.rb, line 207</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">concat</span>(<span class="ruby-identifier">array</span>)
+  <span class="ruby-identifier">array</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">entry</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">self</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">entry</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- concat-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- concat-method -->
+
+    
+      <div id="method-i-delete" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">delete</span><span
+            class="method-args">(value) { |value| ... }</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="delete-source">
+            <pre><span class="ruby-comment"># File lib/keymap/connection_adapters/redis_adapter.rb, line 228</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">delete</span>(<span class="ruby-identifier">value</span>)
+  <span class="ruby-identifier">value</span> = <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">lrem</span>(<span class="ruby-identifier">id</span>, <span class="ruby-value">0</span>, <span class="ruby-identifier">value</span>) <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">value</span>
+  <span class="ruby-keyword">yield</span> <span class="ruby-identifier">value</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
+  <span class="ruby-identifier">value</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- delete-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- delete-method -->
+
+    
+      <div id="method-i-delete_if" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">delete_if</span><span
+            class="method-args">() { |value| ... }</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="delete_if-source">
+            <pre><span class="ruby-comment"># File lib/keymap/connection_adapters/redis_adapter.rb, line 234</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">delete_if</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
+    <span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">delete</span>(<span class="ruby-identifier">value</span>) <span class="ruby-keyword">if</span> <span class="ruby-keyword">yield</span>(<span class="ruby-identifier">value</span>)
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">self</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- delete_if-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- delete_if-method -->
+
+    
+      <div id="method-i-each" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">each</span><span
+            class="method-args">() { |item| ... }</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="each-source">
+            <pre><span class="ruby-comment"># File lib/keymap/connection_adapters/redis_adapter.rb, line 176</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">each</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
+    <span class="ruby-identifier">step_size</span> = <span class="ruby-value">100</span>
+    (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">length</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">step_size</span>).<span class="ruby-identifier">step</span>(<span class="ruby-identifier">step_size</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">step</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">first</span> = <span class="ruby-identifier">step_size</span> * <span class="ruby-identifier">step</span>
+      <span class="ruby-identifier">last</span> = <span class="ruby-identifier">first</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">step_size</span>
+      <span class="ruby-identifier">list</span> = <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">lrange</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">first</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">last</span>
+      <span class="ruby-identifier">list</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword">yield</span> <span class="ruby-identifier">item</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-operator">::</span><span class="ruby-constant">Enumerable</span><span class="ruby-operator">::</span><span class="ruby-constant">Enumerator</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>, <span class="ruby-value">:each</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- each-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- each-method -->
+
+    
+      <div id="method-i-empty-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">empty?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="empty-3F-source">
+            <pre><span class="ruby-comment"># File lib/keymap/connection_adapters/redis_adapter.rb, line 220</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">empty?</span>()
+  <span class="ruby-identifier">length</span> <span class="ruby-operator">!=</span> <span class="ruby-value">1</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- empty-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- empty-3F-method -->
+
+    
+      <div id="method-i-length" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">length</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="length-source">
+            <pre><span class="ruby-comment"># File lib/keymap/connection_adapters/redis_adapter.rb, line 214</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">length</span>
+  <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">llen</span>(<span class="ruby-identifier">id</span>) <span class="ruby-operator">-</span><span class="ruby-value">1</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- length-source -->
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="RedisList.html#method-i-size">size</a>
+        </div>
+        
+
+        
+      </div><!-- length-method -->
+
+    
+      <div id="method-i-pop" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">pop</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="pop-source">
+            <pre><span class="ruby-comment"># File lib/keymap/connection_adapters/redis_adapter.rb, line 224</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">pop</span>()
+  <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">rpop</span> <span class="ruby-identifier">id</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- pop-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- pop-method -->
+
+    
+      <div id="method-i-push" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">push</span><span
+            class="method-args">(value)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="RedisList.html#method-i-3C-3C">&lt;&lt;</a>
+        </div>
+        
+      </div><!-- push-method -->
+
+    
+      <div id="method-i-size" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">size</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="RedisList.html#method-i-length">length</a>
+        </div>
+        
+      </div><!-- size-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+
